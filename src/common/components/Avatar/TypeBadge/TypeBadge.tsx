@@ -14,7 +14,7 @@ import { THEME_TYPES } from '@common/styles/themeConfig'
 const SAFE_BADGE_ICON_SIZE = 16
 
 interface Props {
-  smartAccountType?: 'Ambire' | 'Safe'
+  smartAccountType?: 'Ambire' | 'Safe' | 'Darknonce'
   size?: 'big' | 'small'
   showTooltip?: boolean
 }

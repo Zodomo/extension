@@ -1,0 +1,6 @@
+{
+  "extends": "../tsconfig.typecheck-extension.json",
+  "compilerOptions": { "module": "CommonJS", "types": ["node", "chrome"] },
+  "include": ["*.ts", "test/**/*.ts"],
+  "exclude": ["node_modules"]
+}

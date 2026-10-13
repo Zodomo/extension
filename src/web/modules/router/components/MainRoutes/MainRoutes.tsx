@@ -30,6 +30,7 @@ import SurveyScreen from '@web/modules/survey/screens/SurveyScreen/SurveyScreen'
 import SwapAndBridgeScreen from '@web/modules/swap-and-bridge/screens/SwapAndBridgeScreen'
 import TokenDetailsScreen from '@web/modules/token-details/screens/TokenDetailsScreen'
 import TransferScreen from '@web/modules/transfer/screens/TransferScreen'
+import DarknonceScreen from '@web/modules/darknonce/DarknonceScreen'
 
 const MainRoutes = () => {
   const location = useLocation()
@@ -80,6 +81,7 @@ const MainRoutes = () => {
           />
 
           <Route element={<KeystoreUnlockedRoute />}>
+            <Route path={WEB_ROUTES.darknonce} element={<DarknonceScreen />} />
             <Route
               path={WEB_ROUTES.getStarted}
               element={<AuthGroupScreen pick={(m) => m.GetStartedScreen} />}

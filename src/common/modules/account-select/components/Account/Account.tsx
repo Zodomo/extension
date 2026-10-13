@@ -21,6 +21,8 @@ import useHover, { AnimatedPressable, useCustomHover } from '@common/hooks/useHo
 import useReverseLookup from '@common/hooks/useReverseLookup'
 import useTheme from '@common/hooks/useTheme'
 import useToast from '@common/hooks/useToast'
+import useNavigation from '@common/hooks/useNavigation'
+import { ROUTES } from '@common/modules/router/constants/common'
 import spacings, { SPACING_TY } from '@common/styles/spacings'
 import flexbox from '@common/styles/utils/flexbox'
 
@@ -82,6 +84,8 @@ const Account = ({
   const { t } = useTranslation()
   const { theme, styles } = useTheme(getStyles)
   const { addToast } = useToast()
+  const { navigate } = useNavigation()
+  const { dispatch: darknonceDispatch } = useController('DarknonceController', 'accountAddr')
   const { state: mainStatuses, dispatch: mainDispatch } = useController(
     'MainController',
     selectMainStatuses
@@ -152,6 +156,11 @@ const Account = ({
   )
 
   const onDropdownSelect = (item: { label: string; value: string }) => {
+    if (item.value === 'darknonce') {
+      darknonceDispatch({ type: 'method', params: { method: 'inspect', args: [account.addr] } })
+      navigate(ROUTES.darknonce)
+      return
+    }
     if (item.value === 'remove') {
       !!options.setAccountToRemove && options.setAccountToRemove(account)
       return
@@ -179,6 +188,7 @@ const Account = ({
 
     const add7702Option = canBecomeSmarter(account, getAccKeys(account))
     const submenuOptions = [
+      ...(account.darknonce ? [{ label: 'Darknonce settings', value: 'darknonce' }] : []),
       { label: account.safeCreation ? 'Manage owners' : 'Manage keys', value: 'keys' },
       { label: 'Remove account', value: 'remove', style: { color: theme.errorDecorative } }
     ]
@@ -221,7 +231,11 @@ const Account = ({
         <Avatar
           address={account.addr}
           pfp={account.preferences.pfp}
-          smartAccountType={(account.creation && 'Ambire') || (account.safeCreation && 'Safe')}
+          smartAccountType={
+            (account.darknonce && 'Darknonce') ||
+            (account.creation && 'Ambire') ||
+            (account.safeCreation && 'Safe')
+          }
           showTooltip
         />
         <View style={[flexbox.flex1, flexbox.justifyCenter]}>

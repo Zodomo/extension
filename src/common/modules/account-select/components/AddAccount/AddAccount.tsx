@@ -1,4 +1,4 @@
-import React, { useMemo, useRef, useState } from 'react'
+import React, { useCallback, useMemo, useRef, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { View } from 'react-native'
 import { useModalize } from 'react-native-modalize'
@@ -60,6 +60,12 @@ const AddAccount = ({
     close: closeSeedPhraseBottomSheet
   } = useModalize()
   const { state: seeds } = useController('KeystoreController', 'seeds')
+  const { dispatch: darknonceDispatch } = useController('DarknonceController', 'accountAddr')
+  const openDarknonce = useCallback(() => {
+    darknonceDispatch({ type: 'method', params: { method: 'reset', args: [] } })
+    closeBottomSheet()
+    goToNextRoute(ROUTES.darknonce)
+  }, [darknonceDispatch, closeBottomSheet, goToNextRoute])
 
   const optionsHW = useMemo(() => {
     if (isMobile)
@@ -212,6 +218,13 @@ const AddAccount = ({
         }}
       >
         <ModalHeader handleClose={closeBottomSheet} title={t('Add an account')} />
+        <Option
+          text={t('Darknonce account')}
+          icon={SafeBadgeIcon}
+          onPress={openDarknonce}
+          testID="add-darknonce-account"
+          status="none"
+        />
         <Option
           text={t('Add from stored recovery phrases')}
           disabled={!seeds.length}

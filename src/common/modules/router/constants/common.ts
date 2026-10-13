@@ -20,6 +20,7 @@ const COMMON_ROUTES = {
   onboardingCompleted: 'wallet-setup-completed',
   viewOnlyAccountAdder: 'view-only-account-adder',
   safeImport: 'safe-import',
+  darknonce: 'darknonce',
   safeImportAddress: 'safe-import-address',
   safeImportByOwner: 'safe-import-by-owner',
   qrConnect: 'qr-connect',

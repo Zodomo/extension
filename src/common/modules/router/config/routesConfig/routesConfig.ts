@@ -15,6 +15,11 @@ type RouteConfig = {
 
 // @ts-ignore
 const routesConfig: RouteConfig = {
+  [ROUTES.darknonce]: {
+    route: ROUTES.darknonce,
+    title: i18n.t('Darknonce'),
+    name: i18n.t('Darknonce')
+  },
   [ROUTES.keyStoreUnlock]: {
     route: ROUTES.keyStoreUnlock,
     title: Platform.select({

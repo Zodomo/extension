@@ -48,7 +48,7 @@ interface Props {
    * The address of the user - used to generate the avatar
    */
   address: string
-  smartAccountType?: 'Ambire' | 'Safe'
+  smartAccountType?: 'Ambire' | 'Safe' | 'Darknonce'
   size?: number
   style?: ViewStyle
   showTooltip?: boolean

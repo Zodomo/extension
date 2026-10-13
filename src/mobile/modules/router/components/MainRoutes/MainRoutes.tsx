@@ -47,6 +47,7 @@ import TrendingTokensScreen from '@common/modules/explore/screens/TrendingTokens
 import TransferScreen from '@mobile/modules/transfer/screens/TransferScreen'
 import ImportAccountsFromExtensionScreen from '@mobile/modules/accounts-sync/screens/ImportAccountsFromExtensionScreen'
 import DappWebViewScreen from '@mobile/modules/webview/screens/DappWebViewScreen'
+import DarknonceScreen from '@mobile/modules/darknonce/DarknonceScreen'
 
 // The location these routes match is the one `AppRoutes` scopes the context to.
 const MainRoutes = () => {
@@ -54,6 +55,7 @@ const MainRoutes = () => {
     <Routes>
       <Route path={ROUTES.keyStoreSetup} element={<KeyStoreSetupScreen />} />
       <Route element={<KeystoreUnlockedRoute />}>
+        <Route path={ROUTES.darknonce} element={<DarknonceScreen />} />
         <Route path={ROUTES.getStarted} element={<GetStartedScreen />} />
         <Route path={ROUTES.migrationOnboarding} element={<MigrationOnboardingScreen />} />
         <Route path={ROUTES.networksConfiguration} element={<NetworksConfiguration />} />

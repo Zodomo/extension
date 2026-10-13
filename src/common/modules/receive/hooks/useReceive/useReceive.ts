@@ -104,7 +104,7 @@ const useReceive = () => {
     extraNetworks,
     showAllNetworks,
     setShowAllNetworks,
-    isEOA: !account?.creation && !account?.safeCreation
+    isEOA: !account?.creation && !account?.safeCreation && !account?.darknonce
   }
 }
 

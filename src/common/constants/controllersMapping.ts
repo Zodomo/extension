@@ -8,6 +8,7 @@ import type { ContractInfoController } from '@ambire-common/controllers/contract
 import type { ContractNamesController } from '@ambire-common/controllers/contractNames/contractNames'
 import type { DappsController } from '@ambire-common/controllers/dapps/dapps'
 import type { DebugController } from '@ambire-common/controllers/debug/debug'
+import type { DarknonceController } from '@ambire-common/controllers/darknonce/darknonce'
 import type { DomainsController } from '@ambire-common/controllers/domains/domains'
 import type { EmailVaultController } from '@ambire-common/controllers/emailVault/emailVault'
 import type { FeatureFlagsController } from '@ambire-common/controllers/featureFlags/featureFlags'
@@ -68,6 +69,7 @@ export type ControllersNestedInMainMappingType = {
   SurveyController: SurveyController
   DebugController: DebugController
   VerificationController: VerificationController
+  DarknonceController: DarknonceController
 
   // Add the rest of the controllers that are part of the main controller:
   // - key is the name of the controller
@@ -106,7 +108,8 @@ export const controllersNestedInMainMapping =
     'ContractInfoController',
     'SurveyController',
     'DebugController',
-    'VerificationController'
+    'VerificationController',
+    'DarknonceController'
   ] as const)
 
 export type AllControllersMappingType = {

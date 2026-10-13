@@ -67,6 +67,7 @@ const AccountData: FC<Props> = ({ onPress, withArrowRightIcon }) => {
   }
 
   const smartAccountType = useMemo(() => {
+    if (account?.darknonce) return 'Darknonce'
     if (account?.creation) return 'Ambire'
     if (account?.safeCreation) return 'Safe'
     return undefined
